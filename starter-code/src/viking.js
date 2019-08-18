@@ -40,7 +40,7 @@ function Saxon(health, strength){
       return `A Saxon has received ${damage} points of damage`
     }else{
       return `A Saxon has died in combat`
-          }  
+        }  
     }  
   }
 
@@ -62,16 +62,32 @@ function War(){
   this.addSaxon = function(saxon){
     this.saxonArmy.push(saxon)
   }
-  
+
   this.vikingAttack = function(){
-  //Saxon.receiveDamage(this.damage) = Viking.strength
-    Saxon.prototype.attack = function(saxon){
-      saxon.receiveDamage(this.damage) 
-    } = Viking.strength
+    const randomoSaxon = saxonArmy[Math.floor(Math.random() * saxonArmy.length)]
+
+    const battleResult = this.saxonArmy[randomoSaxon].receiveDamage(Viking.strength)
+    if (this.randomoSaxon[Saxon].health <= 0){
+      this.saxonArmy.splice(randomoSaxon,1)
+    }
+    return battleResult
   }
-  const vikingAttack = new Saxon()
-  vikingAttack.receiveDamage()
+
+  this.saxonAttack = function(){
+    const randomViking = vikingArmy[Math.floor(Math.random() * vikingArmy.length)]
+    const battleResult = this.vikingArmy[randomViking].receiveDamage(Saxon.strength)
+    if (this.vikingArmy[Viking].health <= 0){
+      this.vikingArmy.splice(randomViking,1)
+    }
+    return battleResult    
+  }
+
+  this.showStatus = function(){
+    if(saxonArmy.length == 0){
+      return "Vikings have won the war of the century!"
+    }else if(vikingArmy.length == 0){
+      return "Saxons have fought for their lives and survive another day..."
+    }else
+    return "Vikings and Saxons are still in the thick of battle."
+  }
 }
-// Pokemon.prototype.atacar = function(pokemon){
-//   pokemon.receiveDamage(this.attack)
-// }
